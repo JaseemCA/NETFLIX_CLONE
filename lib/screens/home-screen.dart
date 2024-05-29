@@ -14,11 +14,15 @@ class Homepage extends StatefulWidget {
 
 class _HomepageState extends State<Homepage> {
   late Future<List<Movie>> trendingmovies;
+  late Future<List<Movie>> topratedmovies;
+  late Future<List<Movie>> upcomingmovies;
 
   @override
   void initState() {
     super.initState();
     trendingmovies = Api().getTrendinMovie();
+    topratedmovies = Api().getTopRatedMovie();
+    upcomingmovies = Api().getUpComingMovie();
   }
 
   @override
@@ -55,7 +59,7 @@ class _HomepageState extends State<Homepage> {
                           );
                         } else if (snapshot.hasData) {
                           // final data = snapshot.data;
-                          return  TrendingMovies(snapshot: snapshot);
+                          return TrendingMovies(snapshot: snapshot);
                         } else {
                           return const Center(
                               child: CircularProgressIndicator());
@@ -68,14 +72,48 @@ class _HomepageState extends State<Homepage> {
                   style: GoogleFonts.aBeeZee(fontSize: 22),
                 ),
                 const SizedBox(height: 30),
-                const MovieSlider(),
+                SizedBox(
+                  child: FutureBuilder(
+                      future: topratedmovies,
+                      builder: (context, snapshot) {
+                        if (snapshot.hasError) {
+                          return Center(
+                            child: Text(snapshot.error.toString()),
+                          );
+                        } else if (snapshot.hasData) {
+                          // final data = snapshot.data;
+                          return MovieSlider(snapshot: snapshot);
+                        } else {
+                          return const Center(
+                              child: CircularProgressIndicator());
+                        }
+                      }
+                      ),
+                ),
                 const SizedBox(height: 30),
                 Text(
                   "Upcoming movies",
                   style: GoogleFonts.aBeeZee(fontSize: 22),
                 ),
                 const SizedBox(height: 30),
-                const MovieSlider(),
+                 SizedBox(
+                  child: FutureBuilder(
+                      future: upcomingmovies,
+                      builder: (context, snapshot) {
+                        if (snapshot.hasError) {
+                          return Center(
+                            child: Text(snapshot.error.toString()),
+                          );
+                        } else if (snapshot.hasData) {
+                          // final data = snapshot.data;
+                          return MovieSlider(snapshot: snapshot);
+                        } else {
+                          return const Center(
+                              child: CircularProgressIndicator());
+                        }
+                      }
+                      ),
+                ),
               ],
             ),
           ),

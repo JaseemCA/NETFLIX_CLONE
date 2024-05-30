@@ -4,9 +4,11 @@ import 'package:netflixclone/constants/constant.dart';
 
 class TrendingMovies extends StatelessWidget {
   const TrendingMovies({
-    super.key, required this.snapshot,
+    super.key,
+    required this.snapshot, 
   });
   final AsyncSnapshot snapshot;
+
 
   @override
   Widget build(BuildContext context) {
@@ -20,6 +22,7 @@ class TrendingMovies extends StatelessWidget {
               viewportFraction: 0.55,
               enlargeCenterPage: true,
               pageSnapping: true,
+             scrollDirection: Axis.horizontal,
               autoPlayCurve: Curves.fastOutSlowIn,
               autoPlayAnimationDuration: const Duration(seconds: 1)),
           itemBuilder: (context, itemIndex, pageviewIndex) {
@@ -29,11 +32,9 @@ class TrendingMovies extends StatelessWidget {
                 height: 400,
                 width: 180,
                 child: Image.network(
-                  filterQuality: FilterQuality.high,
-                  fit: BoxFit.cover,
-                  '${Constant.imagepath}${snapshot.data[itemIndex].posterpath}'
-                ),
-                
+                    filterQuality: FilterQuality.high,
+                    fit: BoxFit.cover,
+                    '${Constant.imagepath}${snapshot.data[itemIndex].posterpath}'),
               ),
             );
           }),

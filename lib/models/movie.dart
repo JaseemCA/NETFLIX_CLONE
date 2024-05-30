@@ -1,4 +1,5 @@
 class Movie {
+  
   String title;
   String backDropPath;
   String originalTitle;
@@ -8,6 +9,7 @@ class Movie {
   double voteaverage;
 
   Movie({
+    
     required this.title,
     required this.backDropPath,
     required this.originalTitle,
@@ -19,6 +21,7 @@ class Movie {
 
   factory Movie.fromJson(Map<String, dynamic> json) {
     return Movie(
+      
         title: json['title'] ?? "some title",
         backDropPath: json['backdrop_path'],
         originalTitle: json['original_title'],
@@ -31,5 +34,4 @@ class Movie {
 //   Map<String, dynamic> toJson() => {
 // "title":title,
 //   };
-
 }

@@ -38,6 +38,8 @@ dependencies:
   google_fonts: ^6.2.0
   http: ^1.1.0
   carousel_slider: ^4.2.1
+  lottie: ^3.1.2
+  cached_network_image: ^3.3.1
 
 dev_dependencies:
   flutter_test:
@@ -64,6 +66,7 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
     - assets/Netflix-Logo.png
+    - assets/Animation - 1711432641184.json
     
 
   # An image asset can refer to one or more resolution-specific "variants", see

@@ -48,7 +48,7 @@ class _HomepageState extends State<Homepage> {
               children: [
                 Text('Trending Movies',
                     style: GoogleFonts.aBeeZee(fontSize: 22)),
-                const SizedBox(height: 30),
+                const SizedBox(height: 20),
                 SizedBox(
                   child: FutureBuilder(
                       future: trendingmovies,
@@ -59,19 +59,19 @@ class _HomepageState extends State<Homepage> {
                           );
                         } else if (snapshot.hasData) {
                           // final data = snapshot.data;
-                          return TrendingMovies(snapshot: snapshot);
+                          return TrendingMovies(snapshot: snapshot,);
                         } else {
                           return const Center(
                               child: CircularProgressIndicator());
                         }
                       }),
                 ),
-                const SizedBox(height: 30),
+                const SizedBox(height: 20),
                 Text(
                   "Top rated movies",
                   style: GoogleFonts.aBeeZee(fontSize: 22),
                 ),
-                const SizedBox(height: 30),
+                const SizedBox(height: 20),
                 SizedBox(
                   child: FutureBuilder(
                       future: topratedmovies,
@@ -82,21 +82,20 @@ class _HomepageState extends State<Homepage> {
                           );
                         } else if (snapshot.hasData) {
                           // final data = snapshot.data;
-                          return MovieSlider(snapshot: snapshot);
+                          return MovieSlider(snapshot: snapshot,direction: Axis.horizontal,showTitle: false,);
                         } else {
                           return const Center(
-                              child: CircularProgressIndicator());
+                              child: CircularProgressIndicator(color: Colors.transparent,));
                         }
-                      }
-                      ),
+                      }),
                 ),
-                const SizedBox(height: 30),
+                const SizedBox(height: 20),
                 Text(
                   "Upcoming movies",
                   style: GoogleFonts.aBeeZee(fontSize: 22),
                 ),
-                const SizedBox(height: 30),
-                 SizedBox(
+                const SizedBox(height: 20),
+                SizedBox(
                   child: FutureBuilder(
                       future: upcomingmovies,
                       builder: (context, snapshot) {
@@ -106,13 +105,12 @@ class _HomepageState extends State<Homepage> {
                           );
                         } else if (snapshot.hasData) {
                           // final data = snapshot.data;
-                          return MovieSlider(snapshot: snapshot);
+                          return MovieSlider(snapshot: snapshot,direction: Axis.horizontal,showTitle: false,);
                         } else {
                           return const Center(
-                              child: CircularProgressIndicator());
+                              child: CircularProgressIndicator(color: Colors.transparent,));
                         }
-                      }
-                      ),
+                      }),
                 ),
               ],
             ),

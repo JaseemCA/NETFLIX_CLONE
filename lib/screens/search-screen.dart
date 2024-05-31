@@ -3,7 +3,6 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:netflixclone/apiservice/api.dart';
 import 'package:netflixclone/models/movie.dart';
 import 'package:netflixclone/models/searchmovie.dart';
-import 'package:netflixclone/screens/movie-details.dart';
 import 'package:netflixclone/widgets/topsearched.dart';
 
 class SearchScreen extends StatefulWidget {
@@ -122,7 +121,7 @@ class _SearchScreenState extends State<SearchScreen> {
                                 );
                               } else if (snapshot.hasData) {
                                 return TopSearchedSlider(
-                                  snapshot: snapshot,                                );
+                                  snapshot: snapshot);
                               } else {
                                 return const Center(
                                   child: CircularProgressIndicator(),

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:netflixclone/screens/home-screen.dart';
-import 'package:netflixclone/screens/more-screen.dart';
+import 'package:netflixclone/screens/new-and-hot.dart';
 import 'package:netflixclone/screens/search-screen.dart';
 
 class BottomNavbar extends StatelessWidget {
@@ -38,7 +38,7 @@ class BottomNavbar extends StatelessWidget {
             children: [
               Homepage(),
               SearchScreen(),
-              MoreScreen()
+              Newndotscreen(),
               
               ]),
         ));

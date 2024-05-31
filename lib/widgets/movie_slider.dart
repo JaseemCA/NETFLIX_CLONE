@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:netflixclone/constants/constant.dart';
+import 'package:netflixclone/screens/movie-details.dart';
 
 class MovieSlider extends StatelessWidget {
   const MovieSlider({
@@ -26,32 +27,40 @@ class MovieSlider extends StatelessWidget {
         itemCount: snapshot.data!.length,
         itemBuilder: (context, index) {
           final movie = snapshot.data![index];
-          return Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(8),
-              child: SizedBox(
-                height: 200,
-                width: 150,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Expanded(
-                      child: Image.network(
-                        '${Constant.imagepath}${movie.posterpath}',
-                        filterQuality: FilterQuality.high,
-                        fit: BoxFit.cover,
+          return InkWell(onTap: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) =>
+                          MovieDetailScreen(movie: movie)));
+            },
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(8),
+                child: SizedBox(
+                  height: 200,
+                  width: 150,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Expanded(
+                        child: Image.network(
+                          '${Constant.imagepath}${movie.posterpath}',
+                          filterQuality: FilterQuality.high,
+                          fit: BoxFit.cover,
+                        ),
                       ),
-                    ),
-                    (showTitle)
-                        ? Text(movie.title,
-                            style: const TextStyle(
-                              color: Colors.white,
-                              fontSize: 16,
-                              fontWeight: FontWeight.bold,
-                            ))
-                        : const SizedBox()
-                  ],
+                      (showTitle)
+                          ? Text(movie.title,
+                              style: const TextStyle(
+                                color: Colors.white,
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold,
+                              ))
+                          : const SizedBox()
+                    ],
+                  ),
                 ),
               ),
             ),

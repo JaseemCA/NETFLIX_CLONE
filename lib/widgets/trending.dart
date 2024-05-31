@@ -1,6 +1,7 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:netflixclone/constants/constant.dart';
+import 'package:netflixclone/screens/movie-details.dart';
 
 class TrendingMovies extends StatelessWidget {
   const TrendingMovies({
@@ -26,15 +27,24 @@ class TrendingMovies extends StatelessWidget {
               autoPlayCurve: Curves.fastOutSlowIn,
               autoPlayAnimationDuration: const Duration(seconds: 1)),
           itemBuilder: (context, itemIndex, pageviewIndex) {
-            return ClipRRect(
-              borderRadius: BorderRadius.circular(12),
-              child: SizedBox(
-                height: 400,
-                width: 180,
-                child: Image.network(
-                    filterQuality: FilterQuality.high,
-                    fit: BoxFit.cover,
-                    '${Constant.imagepath}${snapshot.data[itemIndex].posterpath}'),
+            final movie = snapshot.data![itemIndex];
+            return InkWell(onTap: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) =>
+                          MovieDetailScreen(movie: movie)));
+            },
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(12),
+                child: SizedBox(
+                  height: 400,
+                  width: 180,
+                  child: Image.network(
+                      filterQuality: FilterQuality.high,
+                      fit: BoxFit.cover,
+                      '${Constant.imagepath}${snapshot.data[itemIndex].posterpath}'),
+                ),
               ),
             );
           }),

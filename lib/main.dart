@@ -17,7 +17,6 @@ class MyApp extends StatelessWidget {
       title: 'NETFLIX',
       theme: ThemeData.dark().copyWith(
         scaffoldBackgroundColor: colours.scaffoldBgColor,
-        useMaterial3: true,
       ),
       home: const SplashScreen(),
     );

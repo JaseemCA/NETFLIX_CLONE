@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'package:flutter/material.dart';
 import 'package:netflixclone/constants/constant.dart';
 import 'package:netflixclone/models/detailsmodel.dart';
 import 'package:netflixclone/models/movie.dart';

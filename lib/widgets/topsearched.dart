@@ -6,11 +6,11 @@ class TopSearchedSlider extends StatelessWidget {
    const TopSearchedSlider({
     Key? key,
     required this.snapshot,
-    required this.direction,
+  
   }) : super(key: key);
 
   final AsyncSnapshot snapshot;
-  final Axis direction;
+  
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +18,7 @@ class TopSearchedSlider extends StatelessWidget {
     return SizedBox(
       height: 200,
       child: ListView.builder(
-        scrollDirection: direction,
+       
         physics:const BouncingScrollPhysics(),
         itemCount: snapshot.data.length,
         itemBuilder: (context, index) {

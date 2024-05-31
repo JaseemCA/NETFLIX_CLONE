@@ -3,6 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:netflixclone/apiservice/api.dart';
 import 'package:netflixclone/models/movie.dart';
 import 'package:netflixclone/models/searchmovie.dart';
+import 'package:netflixclone/screens/movie-details.dart';
 import 'package:netflixclone/widgets/topsearched.dart';
 
 class SearchScreen extends StatefulWidget {
@@ -17,8 +18,10 @@ class _SearchScreenState extends State<SearchScreen> {
   Api apiServices = Api();
 
   SearchModel? searchModel;
+    late final AsyncSnapshot snapshot;
 
   late Future<List<Movie>> topratedmovies;
+  late Future<List<SearchModel>> searchedmovie;
 
   void search(String query) {
     apiServices.getSearchedMovies(query).then((results) {
@@ -119,9 +122,7 @@ class _SearchScreenState extends State<SearchScreen> {
                                 );
                               } else if (snapshot.hasData) {
                                 return TopSearchedSlider(
-                                  snapshot: snapshot,
-                                  direction: Axis.vertical,
-                                );
+                                  snapshot: snapshot,                                );
                               } else {
                                 return const Center(
                                   child: CircularProgressIndicator(),
@@ -146,6 +147,7 @@ class _SearchScreenState extends State<SearchScreen> {
                             ),
                             itemCount: searchModel!.results.length,
                             itemBuilder: (context, index) {
+                              // final movie = snapshot.data![index];
                               final result = searchModel!.results[index];
                               return Column(
                                 children: [
@@ -161,8 +163,8 @@ class _SearchScreenState extends State<SearchScreen> {
                                       result.title,
                                       maxLines: 2,
                                       overflow: TextOverflow.ellipsis,
-                                      style:
-                                          const TextStyle(color: Colors.white),
+                                      style: const TextStyle(
+                                          color: Colors.white),
                                       textAlign: TextAlign.center,
                                     ),
                                   ),

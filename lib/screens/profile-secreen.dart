@@ -37,11 +37,13 @@ class Profilepage extends StatelessWidget {
               ClipRRect(
                 borderRadius: BorderRadius.circular(6),
                 child: Container(
+                  
                   height: 100,
                   width: 100,
+                  
                   decoration: const BoxDecoration(
                       image: DecorationImage(
-                          image: AssetImage("assets/netflix_welcome.jpg"))),
+                          image: AssetImage("assets/Netflix-Logo.png"))),
                 ),
               ),
               const SizedBox(
